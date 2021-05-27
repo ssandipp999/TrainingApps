@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Login</title>
+<script>
+function cancel()
+{
+document.getElementById("txtUserName").value="";
+document.getElementById("txtPassword").value="";
+}
+
+function login()
+{
+
+var txtUserName=document.getElementById("txtUserName").value;
+var txtPassword=document.getElementById("txtPassword").value;
+
+
+if(txtUserName==null || txtUserName=="" || txtPassword==null || txtPassword=="" )
+{
+alert("invalid input");
+return;
+}
+	var passwordMatch=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8}$/;
+	
+      if(!txtPassword.match(passwordMatch))
+      {
+	  alert("Password must be the 8 characters and that should be combination of Alphabets and numbers and special symbols");
+	  return;
+	  }
+	  
+	  alert("Login successfully.");
+}
+
+
+</script>
+</head>
+<body align="center">
+<table border=0 align="center">
+<tr>
+<td>Username
+
+</td>
+<td>
+<input type=""text" id="txtUserName" />
+</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td>Password
+
+</td>
+<td>
+<input type="password" id="txtPassword" />
+</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td colspan="2" align="center">
+
+<input type="button" id="btnLogin" value="Login" onclick="login()"/>
+<input type="button" id="btnCancel" value="Cancel" onclick="cancel()"/>
+</td>
+<tr>
+<tr>
+</tr>
+<td colspan="2" align="center">
+<div id="result" style="color:green;"></div>
+<div id="error" style="color:red;"></div>
+</td>
+<tr>
+</table>
+
+
+</body>
+</html>
