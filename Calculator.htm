@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>Calculator</title>
+<script>
+function validateAndScore()
+{
+
+
+var resultObj = document.getElementById("result");
+resultObj.innerHTML="";
+
+var errorObj = document.getElementById("error");
+errorObj.innerHTML="";
+
+var t1=document.getElementById("team1Name").value;
+var t2=document.getElementById("team2Name").value;
+var s1=document.getElementById("team1Score").value;
+var s2=document.getElementById("team2Score").value;
+
+
+
+if(t1==null || t1=="" || t2==null || t2=="" )
+{
+errorObj.innerHTML="Fill both team name";
+return;
+}
+
+	var letters = /^[A-Za-z]+$/;
+
+      if(!t1.match(letters) || !t2.match(letters))
+      {
+	  errorObj.innerHTML="Team name Fields must me in alphabets only";
+	  return;
+	  }
+	  
+	  if(t1==t2)
+	  {
+	  errorObj.innerHTML="invalid input.";
+	  return;
+	  }
+
+
+if(!s1.includes("/") || !s2.includes("/"))
+{
+errorObj.innerHTML="Invalid score";
+return;
+}
+
+var scoreArray=s1.split("/");
+var s1run=Number(scoreArray[0]);
+var s1wicket=Number(scoreArray[1]);
+
+alert(s1run + " "+ s1wicket);
+
+var scoreArray=s2.split("/");
+var s2run=Number(scoreArray[0]);
+var s2wicket=Number(scoreArray[1]);
+
+alert(s1run.Length);
+if(s1run>999 || s2run>999 || s1wicket>10 || s2wicket>10)
+{
+errorObj.innerHTML="Invalid score input.";
+return;
+}
+
+//alert(s1run + " "+ s1wicket);
+//alert(s2run + " "+ s2wicket);
+
+if(s1run>s2run)
+{
+document.getElementById("result").innerHTML=t1 +" won by " + (s1run-s2run) + " run";
+}
+else
+{
+document.getElementById("result").innerHTML=t2+ " won by " + (10-s2wicket) + " wicket";
+}
+
+ //document.getElementById("result").innerHTML="test";
+}
+
+
+</script>
+</head>
+<body align="center">
+<table border=0 align="center">
+<tr>
+<td>Enter the Team Name 1<br/>
+<input type=""text" id="team1Name" />
+</td>
+<td>Score 1<br/>
+<input type=""text" id="team1Score" />
+</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td>Enter the Team Name 2<br/>
+<input type=""text" id="team2Name" />
+</td>
+<td>Score 2<br/>
+<input type=""text" id="team2Score" />
+</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input type="button" id="resultbtn" value="Result" onclick="validateAndScore()"/>
+</td>
+<tr>
+<tr>
+</tr>
+<td colspan="2" align="center">
+<div id="result" style="color:green;"></div>
+<div id="error" style="color:red;"></div>
+</td>
+<tr>
+</table>
+
+
+</body>
+</html>
